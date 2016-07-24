@@ -12,6 +12,13 @@
  (Change)- Changes something
  (Fix)- Fixes a bug/error
 
+--------------------------------- 0.27_Alpha -----------------------------------  (24 July 2016)
+- (Change) Converted few lines of code into python-3 compatible so Heinrichy can be run now on both versions of python; 2.7 & 3.*
+- (-) Removed environment.py as it was crashing in python 3
+- (-) Removed ability to change the version of Heinrichy in config
+- (Change) Moved schedule to separate file schedule.json
+
+
 --------------------------------- 0.23_Alpha -----------------------------------  (20 July 2016)
 - (+) Added ability to search Evi (www.evi.com) if wolframalpha servers return error/no response
 - (+) The user has now the ability to change if the searches will be directed automatically to Evi if wolframalpha returns error, to ask every time or to never contact Evi.
