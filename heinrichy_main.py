@@ -5,44 +5,33 @@
 #              | |_| |/ _ | | '_ \| '__| |/ __| '_ \| | | |
 #              |  _  |  __| | | | | |  | | (__| | | | |_| |
 #              |_| |_|\___|_|_| |_|_|  |_|\___|_| |_|\__, |
-#                                                    |___/            __Alpha_23
+#                                                    |___/           _0.27_Alpha
 #
 #   Heinrichy - personal assistant made especially for GNU/Linux because we
 #                   deserve our own version of siri too!
-#								      By michpcx
+#								      by michpcx
+
 from __future__ import print_function
 
-# Importing first few modules required to analyse environment
+# Modules to import first before anything
 import os
 import sys
+import json
 current_path = os.path.dirname(os.path.abspath(__file__))
-environment_file = current_path + "/environment.py"
-is_environment_file = os.path.isfile(environment_file)
-
-if not is_environment_file:
-    print("environment.py not found, please redownload Heinrichy with this file...")
-    print("Exiting...")
-    sys.exit()
-else:
-    import environment
 
 
-# Checking for config file, analysing the environment
-
+# Checking for config file
 config_file = current_path + "/config.py"
 is_config_file = os.path.isfile(config_file)
 
 if not is_config_file:
     print("Heinrichy - personal assistant made especially for GNU/Linux because we deserve our own version of siri too!")
-    print("Checking environment...")
-    checking_environment.check_os()
-    checking_environment.check_python_version()
-    print("Seems like your environment is able to run Heinrichy, or you had to use force...")
-    print("To make sure Heinrichy will work properly, you need to run install_script.sh to install dependencies.")
+    print("Heinrichy wasn't able to detect config file which is required to run, please redownload\n Heinrichy with this file...")
     print("Exiting...")
     sys.exit()
 else:
     import config
+
     # Loading user info
     name = os.environ.get('Name', config.name)
     date_of_birth = os.environ.get('Date of birth', config.date_of_birth)
@@ -50,32 +39,33 @@ else:
 
     # Loading settings
     show_version = os.environ.get('Show version', config.show_version)
-    show_schedule = os.environ.get('Show schedule', config.show_schedule)
     clear_commands = os.environ.get('Clear commands', config.clear_commands)
     additional_search = os.environ.get('Additional search', config.additional_search)
-    version = os.environ.get('Version', config.version)
     letter_color = os.environ.get('Color of the letters', config.letter_color)
 
-    # Loading schedule
-    schedule = os.environ.get('Schedule', config.schedule)
+    # Loading schedule settings
+    show_schedule = os.environ.get('Show schedule', config.show_schedule)
     schedule_date_format = os.environ.get('Schedule date format', config.schedule_date_format)
     print("Config file loaded...")
 
-# Checking for schedule file
 
-schedule_file = current_path + "/modules/schedule.py"
-is_schedule_file = os.path.isfile(schedule_file)
-
+# Checking for schedule file & schedule module
 print("Loading schedule module...")
-if not is_schedule_file:
-    print("Heinrichy wasn't able to detect schedule.py file in /modules which is required to run, please redownload Heinrichy with this file...")
+schedule_file = current_path + "/schedule.json"
+schedule_module = current_path + "/modules/schedule.py"
+is_schedule_file = os.path.isfile(schedule_file)
+is_schedule_module = os.path.isfile(schedule_module)
+
+if not is_schedule_file or not is_schedule_module:
+    print("Heinrichy wasn't able to detect schedule module or schedule file which is required to run, please redownload\n Heinrichy with this file...")
     print("Exiting...")
     sys.exit()
-
+else:
+    with open(schedule_file, "r+") as schedule_file_open:
+        schedule = json.load(schedule_file_open)
 
 # Loading additional modules, setting important variables and changing the size of terminal
 print("Loading main modules...")
-import json
 import time
 import random
 import httplib2
@@ -85,12 +75,12 @@ import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 
 try:
-    # on Python2, this should work
+    # Python2
     input = raw_input
     range = xrange
     from urllib import urlopen, urlencode
 except NameError:
-    # on Python3 these should work
+    # Python3
     from urllib.request import urlopen
     from urllib.parse import urlencode
 
@@ -119,12 +109,13 @@ else:
     print("Invalid date format, please change 'schedule_date_format' in config file...")
     print("Exiting...")
     sys.exit()
-
+todays_date = str(time.strftime("%d/%m/%Y"))
 
 # Classes & functions
-
 print("Loading classes and functions...")
 
+
+# Adds list with the colours so the colors can be displayed in the terminal
 class bcolors:
     PINK = '\033[95m'
     BLUE = '\033[94m'
@@ -136,34 +127,20 @@ class bcolors:
     UNDERLINE = '\033[4m'
     GREY = '\033[90m'
 
-# Adds list with the colours so the colors can be displayed in the terminal
 
+# Function which lists the schedule.
 def list_schedule():
     total_task_number_today = 0
-    for task in schedule:
-        if schedule[task] == todays_date:
-            if not task in schedule_list_for_today:
-                schedule_list_for_today.insert(total_task_number_today, task)
+    print("Your today's schedule;")
+    for task in schedule["schedule_list"].keys():
+        if schedule["schedule_list"][task] == todays_date:
+            print("- " + task)
             total_task_number_today = total_task_number_today + 1
     if total_task_number_today == 0:
-        print("Your today's schedule;")
         print("- Your schedule is empty for today!")
-    elif not total_task_number_today == 0:
-        print("Your today's schedule;")
-        for task in schedule_list_for_today:
-            print("- " + task)
     print("\n")
 
-# Function lists the schedule. First sets the variable total_task_number_today
-# to 0 then for each item that is in the schedule from config file, checks
-# if the date that comes with the task is todays date. If so, adds the task
-# to the list (schedule_list_for_today) and adds one to total_task_number_today.
-# Then when this is finished for every task, it checks if todays number
-# of tasks is equal to zero, if so, it prints that the schedule is empty.
-# If it doesn't equal to zero (it has some tasks today), for each task in the
-# list (schedule_list_for_today) prints out this task. Wow, this could be
-# actually useful for the future.
-
+# Prints the main
 def print_main_screen():
 
     # Main 'Heinrichy' text
@@ -179,21 +156,17 @@ def print_main_screen():
     print("|        " + color_changer + "o888o   o888o `Y8bod8P' o888o o888o o888o d888b    o888o `Y8bod8P' o888o o888o     .8'" + bcolors.WHITE + "                   |")
     print("|                                                                                       " + color_changer + ".o..P'" + bcolors.WHITE + "                    |")
     if show_version == True:
-        print("|                                                                                       " + color_changer + "`Y8P'" + bcolors.WHITE + "        " + version + "  |")
+        print("|                                                                                       " + color_changer + "`Y8P'" + bcolors.WHITE + "        _0.27_Alpha  |")
     elif show_version == False:
         print("|                                                                                       " + color_changer + "`Y8P'" + bcolors.WHITE + "                     |")
     print("|_________________________________________________________________________________________________________________|")
 
 def print_schedule():
+
     # Printing schedule
     print("\n")
     if show_schedule == True:
-        if not schedule:
-            print("Your today's schedule;")
-            print("- Your schedule is empty for today!")
-            print("\n")
-        else:
-            list_schedule()
+        list_schedule()
     elif show_schedule == False:
         print("\n")
 
@@ -313,7 +286,7 @@ if clear_commands == True:
         print("How can I help you today, " + name + "?")
         user_input = input(">")
         if user_input == "schedule":
-            exec(compile(open(schedule_file).read(), schedule_file, 'exec'))
+            exec(compile(open(schedule_module).read(), schedule_module, 'exec'))
         else:
             print(response(user_input))
             pause = input()
@@ -334,7 +307,7 @@ elif clear_commands == False:
         print("How can I help you today, " + name + "?")
         user_input = input(">")
         if user_input == "schedule":
-            exec(compile(open(schedule_file).read(), schedule_file, 'exec'))
+            exec(compile(open(schedule_module).read(), schedule_module, 'exec'))
         else:
             print(response(user_input))
             pause = input()
