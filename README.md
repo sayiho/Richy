@@ -17,11 +17,11 @@ Heinrichy is python based assistant which can help you with;
 And many more modules coming soon!
 
 ## Current version
-The most recent version is _0.23Alpha which brings:
+The most recent version is _0.27_Alpha which brings:
 
-- 'Back up' answer engine, in case wolframalpha won't have any answers for you, Heinrichy will be able to ask [Evi](https://www.evi.com/)
-- Bug fix
-- Ability to change format of the date
+- Python 2 and python 3 compatibilty so you can use Heinrichy on most of the linux distros now!
+- Schedule is now been moved to schedule.json which gives more room to work it with
+- Few removals and bug fixes which speeds up Heinrichy
 
 ## Installation
 After downloading Heinrichy, run `pip install beautifulsoup` to install Beautiful Soup module which is required. After that all that is left for you to do is to fill in the config file where the values say 'default' (you can also change some other
