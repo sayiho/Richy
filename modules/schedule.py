@@ -1,24 +1,14 @@
 # -*- coding: UTF-8 -*-
 
-#               _   _      _            _      _
-#              | | | | ___(_)_ __  _ __(_) ___| |__  _   _
-#              | |_| |/ _ | | '_ \| '__| |/ __| '_ \| | | |
-#              |  _  |  __| | | | | |  | | (__| | | | |_| |
-#              |_| |_|\___|_|_| |_|_|  |_|\___|_| |_|\__, |
-#                                                    |___/           _0.27_Alpha
-#
-#   Heinrichy - personal assistant made especially for GNU/Linux because we
-#                   deserve our own version of siri too!
-#								      by michpcx
+# Heinrichy module info
+# [Name] = schedule
+# [Description] = schedule module allows to modify your schedule which then will be displayed in Heinrichy
+# [Latest update in] = _0.35_Alpha
 
-
-
-# Script schedule.py allows you to modify your schedule which then will
-# be displayed in Heinrichy
-from __future__ import print_function
 
 
 # Importing main modules
+from __future__ import print_function
 import os
 import sys
 import time
@@ -29,34 +19,38 @@ from json import JSONEncoder
 from json import JSONDecoder
 from sys import platform as _platform
 
-# Setting paths to import config & schedule file
+
+
+# Setting variables
 current_path = os.path.dirname(os.path.abspath(__file__))
 current_path = Path(current_path)
-config_file = current_path.parent
+config_file = current_path + "/config.conf"
 schedule_file = current_path + "/schedule.json"
-sys.path.append(config_file)
 
-# Importing config and opening schedule file
-import config
+
+
+# Opening the schedule file, importing settings from config file and setting variables
 with open(schedule_file, "r+") as schedule_file_open:
     schedule = json.load(schedule_file_open)
 
-# Importing settings
-schedule_date_format = os.environ.get('Schedule date format', config.schedule_date_format)
-
-#Setting variables
+import configparser
+config = configparser.ConfigParser()
+config.read(config_file)
+schedule_date_format = config.get('schedule_module', 'schedule_date_format')
 todays_date = str(time.strftime("%d/%m/%Y"))
+exit_code = 0
 
 try:
     # Python2
     input = raw_input
     range = xrange
-    exit_code = 0
 except NameError:
     # Python3
-    exit_code = 0
+    pass
 
 
+
+# Setting up format of the dates
 if schedule_date_format == "DD/MM/YYYY":
     schedule_date_format_type = 1
     formatted_date = todays_date
@@ -74,9 +68,11 @@ else:
     print("Exiting...")
     sys.exit()
 
-# Functions
 
+
+# Functions
 def list_schedule_full():
+    # Listing all the tasks in the schedule
     total_task_number = 0
     for each_task in schedule["schedule_list"].keys():
         date = schedule["schedule_list"][each_task]
@@ -97,7 +93,6 @@ def list_schedule_full():
 
 print("\n")
 print("Welcome to schedule module of Heinrichy. Here you can modify your schedule.")
-
 
 while exit_code == 0:
     print("Your full schedule including dates;")
@@ -222,9 +217,9 @@ while exit_code == 0:
     elif user_input == "exit":
         print("You are about to exit 'schedule module'. Are you sure you want to continue? [Y/N]")
         user_input = input("schedule, [Y/N]>")
-        if user_input == "Y" or user_input == "y":
+        if user_input.lower() == "y":
             exit_code = 1
-        elif user_input == "N" or user_input == "n":
+        elif user_input.lower() == "n":
             print("Alright then, you can carry on to modify your schedule.")
             print("\n")
         else:
