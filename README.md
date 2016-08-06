@@ -60,6 +60,6 @@ everything in one place in the command line without the need for any user interf
 ## How can I help?
 If you have any ideas on what I could add to Heinrichy, how I could change it or if you found some interesting
 script that I could use as module in Heinrichy, just email me; michpcx@protonmail.ch. Also, if you found some
-bugs in the code or you have more efficient way of performing a task, just create new issue in 'Issues' tab.
+bugs in the code or you have more efficient way of performing a task, just create new issue in the [Issue tracker](https://github.com/MichPCX/Heinrichy/issues).
 
 *By michpcx, michpcx@protonmail.ch*
