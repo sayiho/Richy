@@ -2,7 +2,7 @@
 Personal assistant made especially for GNU/Linux because we deserve our own version of siri too!
 
 
-![alt Heinrichy](https://i.imgur.com/63pl8Ob.png)
+[![asciicast](https://asciinema.org/a/81946.png)](https://asciinema.org/a/81946)
 
 Did you ever wanted to have your own assistant, but the only ones available are for Android/iOS/Windows plus you are
 worried about privacy?
