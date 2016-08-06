@@ -13,11 +13,11 @@ Heinrichy is python based assistant which can help you with;
 - maintaining your schedule
 - aswering your questions
 - calculating medium-level calculation
-- giving you informations about movies on the local drive
+- giving you informations about movies on the local drive (to get more help type in 'movies help')
 
 ## Curent version
 
-The most recent version is _0.27_Alpha which brings:
+The most recent version is _0.35_Alpha which brings:
 - Changed config format from py to conf (loading using configparser) for flexibility
 - Added ability to turn on/off schedule module, multimedia module and modules that will come in the future
 - New module called multimedia which allows to give you more info about movies you have on the local hard drive
@@ -57,8 +57,8 @@ give you any errors, it means you can run Heinrichy by running 'heinrichy_main.p
 ## Modules 
 
 So far, Heinrichy has those modules;
-- Schedule (external) - allows to modify your schedule which will then be displayed in Heinrichy
-- Multimedia (internal) - allows to get more information about movies you have on the local drive
+- Schedule (external) - allows to modify your schedule which will then be displayed in Heinrichy ('schedule')
+- Multimedia (internal) - allows to get more information about movies you have on the local drive ('movie help')
 
 And many more modules and features coming soon!
 
