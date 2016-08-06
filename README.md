@@ -31,23 +31,28 @@ give you any errors, it means you can run Heinrichy by running 'heinrichy_main.p
 
 ## Basic questions
 ```
-'how are you?'
 'schedule'
-'is the martian any good?'
 'whats 100*42?'
-'rhymes to happy'
+'rhymes with coder'
+'scrabble programming'
+'26 pounds to kg'
+'US $900 2005' (inflation)'
+'december 30, 1990 plus 10000 days'
+'dictionary vehicle'
+'tell me a joke'
 ```
 
 ## To-do
 - [x] *Search for movies on the hard drive and give info about them*
+- [x] *Currency conversion*
+- [x] *Dictionary*
+- [x] *Random jokes*
 - [ ] *Wikipedia*
-- [ ] *Dictionary*
 - [ ] *Show weather*
 - [ ] *Improve calculator*
-- [ ] *Currency conversion*
 - [ ] *Lyrics for chosen song*
 - [ ] *Url expander/shortener*
-- [ ] *Random fact/jokes/quotes*
+- [ ] *Random fact/quotes*
 - [ ] *News from chosen websites*
 - [ ] *Allow to install Heinrichy*
 - [ ] *Download subtitles for movies*
