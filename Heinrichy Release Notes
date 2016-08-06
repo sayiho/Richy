@@ -7,26 +7,31 @@
 --                                                   |___/                   --
 --------------------------------------------------------------------------------
 
- (+) - Adds new fectures 
+ (+) - Adds new features 
  (-) - Removes something
  (Change)- Changes something
  (Fix)- Fixes a bug/error
 
---------------------------------- 0.27_Alpha -----------------------------------  (24 July 2016)
+--------------------------------- 0.35_Alpha -----------------------------------  (6rd of August 2016)
+- (Change) Changed config format from py to conf (loading using configparser) for flexibility
+- (+) Added ability to turn on/off schedule module, multimedia module and modules that will come in the future
+- (+) New module called multimedia which allows to give you more info about movies you have on the local hard drive
+- (+) Created first_timer.py script which checks if you have required packages installed to run Heinrichy
+
+--------------------------------- 0.27_Alpha -----------------------------------  (24th of July 2016)
 - (Change) Converted few lines of code into python-3 compatible so Heinrichy can be run now on both versions of python; 2.7 & 3.*
 - (-) Removed environment.py as it was crashing in python 3
 - (-) Removed ability to change the version of Heinrichy in config
 - (Change) Moved schedule to separate file schedule.json
 
-
---------------------------------- 0.23_Alpha -----------------------------------  (20 July 2016)
+--------------------------------- 0.23_Alpha -----------------------------------  (20th of July 2016)
 - (+) Added ability to search Evi (www.evi.com) if wolframalpha servers return error/no response
 - (+) The user has now the ability to change if the searches will be directed automatically to Evi if wolframalpha returns error, to ask every time or to never contact Evi.
 - (Fix) Fixed bug with schedule list being repeated after opening and exiting schedule module
 - (Added) From now on, Heinrichy is shared under GLP v3 license.
 - (Added) Users now can change the format of the dates in the config
 
---------------------------------- 0.20_Alpha -----------------------------------  (10 July 2016)
+--------------------------------- 0.20_Alpha -----------------------------------  (10th of July 2016)
 - (Change) The whole script was rewritten so the code is more elegant and its not a mess.
 - (Change) Config file was changed from json format to py.
 - (+) Created environment.py to check the os and python version on startup.
@@ -36,7 +41,7 @@
 - (+) Added ability to clear the screen after output from Heinrichy
 - (Change) Moved main 'Heinrichy' text and schedule view to the functions
 
---------------------------------- 0.11_Alpha -----------------------------------  (18 January 2016)
+--------------------------------- 0.11_Alpha -----------------------------------  (18th of January 2016)
 
 - (-) Deleted few lines of code in data.py that weren't needed.
 - (+) Added few sentence modifications that allow to add schedule.
@@ -45,7 +50,7 @@
 - (Fix) Fixed bug with signs "--" that were doubled if there wasn't any events for today.
 
 
---------------------------------- 0.10_Alpha -----------------------------------  (18 January 2016)
+--------------------------------- 0.10_Alpha -----------------------------------  (18th of January 2016)
 
 - (+) Added function to add tasks to the schedule.
 - (Change) Variable local_command set as global at the start of the function instead at the end.
