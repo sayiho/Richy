@@ -15,6 +15,10 @@ Heinrichy is python based assistant which can help you with;
 - calculating medium-level calculation
 - giving you informations about movies on the local drive (to get more help type in 'movies help')
 
+## Poll - name change
+
+For some time now, I am considering name change for Heinrichy to "Paperclip (guy)" which would an updated version of famous paperclip guy from microsoft word, but before I commit to this change I need more opinions; [please vote here](https://www.strawpoll.me/10933451). If you could spend 5 seconds of your life on voting for the name for Heinrichy, I would be thankful ;) Or if you have different idea, just send me email!
+
 ## Curent version
 
 The most recent version is _0.35_Alpha which brings:
