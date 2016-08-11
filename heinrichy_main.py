@@ -5,7 +5,7 @@
 #              | |_| |/ _ | | '_ \| '__| |/ __| '_ \| | | |
 #              |  _  |  __| | | | | |  | | (__| | | | |_| |
 #              |_| |_|\___|_|_| |_|_|  |_|\___|_| |_|\__, |
-#                                                    |___/           _0.35_Alpha
+#                                                    |___/           _0.37_Alpha
 #
 #   Heinrichy - personal assistant made especially for GNU/Linux because we
 #                   deserve our own version of siri too!
@@ -161,7 +161,7 @@ def print_main_screen():
     print("|        " + color_changer + "o888o   o888o `Y8bod8P' o888o o888o o888o d888b    o888o `Y8bod8P' o888o o888o     .8'" + bcolors.WHITE + "                   |")
     print("|                                                                                       " + color_changer + ".o..P'" + bcolors.WHITE + "                    |")
     if show_version == "True":
-        print("|                                                                                       " + color_changer + "`Y8P'" + bcolors.WHITE + "        _0.35_Alpha  |")
+        print("|                                                                                       " + color_changer + "`Y8P'" + bcolors.WHITE + "        _0.36_Alpha  |")
     elif show_version == "False":
         print("|                                                                                       " + color_changer + "`Y8P'" + bcolors.WHITE + "                     |")
     print("|_________________________________________________________________________________________________________________|")
@@ -338,6 +338,10 @@ if clear_commands == "True":
         elif user_input == "movies help" or user_input == "movie help":
             modules.multimedia.movies_help()
             pause = input()
+        elif user_input[:12] == "movie search" or user_input[:13] == "movies search":
+            users_movie_name = user_input[13:]
+            modules.multimedia.single_movie_info(users_movie_name)
+            pause = input()
         else:
             print(response(user_input))
             pause = input()
@@ -381,8 +385,12 @@ elif clear_commands == "False":
                 else:
                     print("Seems like there is an error with your command.")
                 pause = input()
-        elif user_input == "movies help":
+        elif user_input == "movies help" or user_input == "movie help":
             modules.multimedia.movies_help()
+            pause = input()
+        elif user_input[:12] == "movie search" or user_input[:13] == "movies search":
+            users_movie_name = user_input[13:]
+            modules.multimedia.single_movie_info(users_movie_name)
             pause = input()
         else:
             print(response(user_input))

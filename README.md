@@ -7,22 +7,18 @@ Personal assistant made especially for GNU/Linux because we deserve our own vers
 Did you ever wanted to have your own assistant, but the only ones available are for Android/iOS/Windows plus you are
 worried about privacy?
 
-Well, now you can have '**Heinrichy**' which will help you to live in the terminal, because what's the point of searching the web which can take a while when you can simply just ask Heinrichy?
+Well, now you can have '**Heinrichy**' which will help you to live in the terminal, because what's the point of searching the web (which can take a while by the way) when you can simply just ask Heinrichy?
 
-Heinrichy is python based assistant which can help you with;
-- maintaining your schedule
-- aswering your questions
-- calculating medium-level calculation
-- giving you informations about movies on the local drive (to get more help type in 'movies help')
+Heinrichy is open-source python-based assistant which can help you with;
+- maintaining your schedule,
+- aswering your questions,
+- calculating medium-level calculation,
+- giving you informations about your movies library or any movie you want
 
 ## Curent version
 
-The most recent version is _0.35_Alpha which brings:
-- Changed config format from py to conf (loading using configparser) for flexibility
-- Added ability to turn on/off schedule module, multimedia module and modules that will come in the future
-- New module called multimedia which allows to give you more info about movies you have on the local hard drive
-- first_timer.py script which checks if you have required packages installed to run Heinrichy
-
+The most recent version is _0.36_Alpha which brings:
+- Added ability to search for movie that it is not in your library using 'movie search (the name of the movie) for example 'movie search the terminator'
 
 ## Installation
 After downloading Heinrichy, fill in the config file where the values say 'default' (you can also change some other
@@ -33,13 +29,13 @@ give you any errors, it means you can run Heinrichy by running 'heinrichy_main.p
 ```
 'schedule'
 'whats 100*42?'
-'rhymes with coder'
-'scrabble programming'
-'26 pounds to kg'
-'US $900 2005' (inflation)'
-'december 30, 1990 plus 10000 days'
-'dictionary vehicle'
 'tell me a joke'
+'26 pounds to kg'
+'rhymes with coder'
+'dictionary vehicle'
+'scrabble programming'
+'US $900 2005' (inflation)
+'december 30, 1990 plus 10000 days'
 ```
 
 ## To-do
@@ -57,11 +53,11 @@ give you any errors, it means you can run Heinrichy by running 'heinrichy_main.p
 - [ ] *Allow to install Heinrichy*
 - [ ] *Download subtitles for movies*
 - [ ] *Move commands into the database*
-- [ ] *Give movie/book/music description*
+- [ ] *Give tvshow/book/music description*
 
-## Modules 
+## Modules
 
-So far, Heinrichy has those modules;
+Prebuilded modules which you can find in Heinrichy;
 - Schedule (external) - allows to modify your schedule which will then be displayed in Heinrichy ('schedule')
 - Multimedia (internal) - allows to get more information about movies you have on the local drive ('movie help')
 

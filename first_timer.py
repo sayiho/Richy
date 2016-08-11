@@ -5,7 +5,7 @@
 #              | |_| |/ _ | | '_ \| '__| |/ __| '_ \| | | |
 #              |  _  |  __| | | | | |  | | (__| | | | |_| |
 #              |_| |_|\___|_|_| |_|_|  |_|\___|_| |_|\__, |
-#                                                    |___/           _0.35_Alpha
+#                                                    |___/           _0.36_Alpha
 #
 #   Heinrichy - personal assistant made especially for GNU/Linux because we
 #                   deserve our own version of siri too!
