@@ -3,7 +3,7 @@
 # Heinrichy module info
 # [Name] = multimedia
 # [Description] = multimedia module allows to manage your library of movies
-# [Latest update in] = _0.35_Alpha
+# [Latest update in] = _0.36_Alpha
 
 
 
@@ -144,9 +144,15 @@ def get_movie_info(name):
     movie_info = guessit(name)
     if movie_info['type'] == "movie":
         if 'year' in movie_info:
-            return omdb(movie_info['title'], movie_info['year'])
+            try:
+                return omdb(movie_info['title'], movie_info['year'])
+            except KeyError:
+                print("Seems like the title you provided is invalid...")
         else:
-            return omdb(movie_info['title'], None)
+            try:
+                return omdb(movie_info['title'], None)
+            except KeyError:
+                print("Seems like the title you provided is invalid...")
     else:
         not_a_movie.append(name)
 
@@ -348,10 +354,38 @@ def movies_help():
     print("        " + Fore.GREEN + "--runtime" + Fore.WHITE + " - lists all movies in your library, filtering by how long is the movie.")
     print("        " + Fore.GREEN + "--imdb-rev" + Fore.WHITE + " - lists all movies in your library, filtering using imdb reviews in the reverse.")
     print("        " + Fore.GREEN + "--tomato-rev" + Fore.WHITE + " - lists all movies in your library, filtering using rotten tomatoes reviews in the reverse.")
+    print(Fore.BLUE + "movie(s) search (the name of the movie)" + Fore.WHITE + " - searches for the movie online and gives you info about it.")
     print("\n\nTo give you info about your movies, Heinrichy's multimedia module ",
     "is based on the code from moviemon. Moviemon is a script made by " + Fore.YELLOW + "iCHAIT,"
     " (https://github.com/iCHAIT/moviemon)" + Fore.WHITE + " which allows to search for movies",
     "on the hard drive and get info about them. Big thanks to " + Fore.YELLOW + "iCHAIT" + Fore.WHITE + "!")
+
+
+def single_movie_info(users_movie_name):
+    if users_movie_name == "":
+        print("Movie name not supplied.")
+    else:
+        data = get_movie_info(users_movie_name)
+        if data == None:
+            print("Please provide valid movie title...")
+        else:
+            table_data = [["TITLE", "GENRE", "RELEASED", "RUNTIME", "TOMATO RATING", "IMDB RATING"]]
+            table = AsciiTable(table_data)
+            try:
+                data["Title"] = clean_table(data["Title"], None, data, table)
+                table_data.append([data["Title"], data["Genre"], data["Released"], data["Runtime"], data["tomatoRating"], data["imdbRating"]])
+                sort_table(table_data, 1, True)
+
+                table_data = [["PLOT"]]
+                table = AsciiTable(table_data)
+                data["Plot"] = clean_table(data["Plot"], None, data, table)
+                table_data.append([data["Plot"]])
+                print_table(table_data)
+
+            except KeyError:
+                print("Seems like the title you provided is invalid...")
+                print("Please provide valid movie title...")
+
 
 # -----------------------------------  Main  -----------------------------------
 
