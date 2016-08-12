@@ -1,4 +1,4 @@
-# Heinrichy
+# Heinrichy [![Build Status](https://travis-ci.org/MichPCX/Heinrichy.svg?branch=master)](https://travis-ci.org/MichPCX/Heinrichy) [![Python 2.7, 3.4, 3.5](https://img.shields.io/pypi/pyversions/icon_font_to_png.svg)](https://github.com/MichPCX/Heinrichy)
 Personal assistant made especially for GNU/Linux because we deserve our own version of siri too!
 
 
