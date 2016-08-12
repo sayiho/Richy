@@ -7,12 +7,22 @@
 --                                                   |___/                   --
 --------------------------------------------------------------------------------
 
- (+) - Adds new features 
+ (+) - Adds something
  (-) - Removes something
  (Change)- Changes something
  (Fix)- Fixes a bug/error
 
---------------------------------- 0.35_Alpha -----------------------------------  (6rd of August 2016)
+ --------------------------------- 0.38_Alpha -----------------------------------  (12th of August 2016)
+ - (Change) Changed class with colours to 'colorama' module as colorama has wider range of options
+ - (Change) Moved config.conf, schedule.json and movies_list.json to config file
+ - (Change) Moved commands to data.json in config folder so its easier to check for commands and there can be lots of variations like "schedule" and "show me my schedule" etc.
+ - (Change) Changed how Heinrichy shows schedule so it is updated every time it wants to show it
+
+--------------------------------- 0.36_Alpha -----------------------------------  (11th of August 2016)
+- (+) Added ability to search for single movie online using command 'movie search (the movie title)'
+- (Fix) Added better error handling when user searches for single movie
+
+--------------------------------- 0.35_Alpha -----------------------------------  (6th of August 2016)
 - (Change) Changed config format from py to conf (loading using configparser) for flexibility
 - (+) Added ability to turn on/off schedule module, multimedia module and modules that will come in the future
 - (+) New module called multimedia which allows to give you more info about movies you have on the local hard drive
@@ -54,4 +64,3 @@
 
 - (+) Added function to add tasks to the schedule.
 - (Change) Variable local_command set as global at the start of the function instead at the end.
-
