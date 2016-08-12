@@ -3,7 +3,7 @@
 # Heinrichy module info
 # [Name] = multimedia
 # [Description] = multimedia module allows to manage your library of movies
-# [Latest update in] = _0.36_Alpha
+# [Latest update in] = _0.38_Alpha
 
 
 
@@ -36,11 +36,11 @@ init()
 import configparser
 current_path = os.path.dirname(os.path.abspath(__file__))
 current_path = Path(current_path)
-config_file = current_path.parent + "/config.conf"
+config_file = current_path.parent + "/config/config.conf"
 
-movies_list_file = current_path + "/movies_list.json"
+movies_list_file = current_path.parent + "/config/movies_list.json"
 
-tv_shows_list = current_path.parent + "/tv_shows_list.json"
+tv_shows_list = current_path.parent + "/config/tv_shows_list.json"
 
 config = configparser.ConfigParser()
 config.read(config_file)
@@ -177,7 +177,6 @@ def list_all(args):
             cnt += 1
     if cnt > 1:
         print("Sorry but for now, multimedia module accepts only one filter tag at the same time.")
-    movies_list_file = current_path + "/movies_list.json"
     is_movies_list_file = os.path.isfile(movies_list_file)
     if not is_movies_list_file:
         print("File with list of movies cannot be found, did you run 'movies index'?")

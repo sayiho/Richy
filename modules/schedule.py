@@ -3,7 +3,7 @@
 # Heinrichy module info
 # [Name] = schedule
 # [Description] = schedule module allows to modify your schedule which then will be displayed in Heinrichy
-# [Latest update in] = _0.35_Alpha
+# [Latest update in] = _0.38_Alpha
 
 
 
@@ -14,6 +14,7 @@ import sys
 import time
 import json
 import calendar
+from colorama import *
 from unipath import Path
 from json import JSONEncoder
 from json import JSONDecoder
@@ -24,8 +25,8 @@ from sys import platform as _platform
 # Setting variables
 current_path = os.path.dirname(os.path.abspath(__file__))
 current_path = Path(current_path)
-config_file = current_path + "/config.conf"
-schedule_file = current_path + "/schedule.json"
+config_file = current_path + "/config/config.conf"
+schedule_file = current_path + "/config/schedule.json"
 
 
 
@@ -40,6 +41,8 @@ schedule_date_format = config.get('schedule_module', 'schedule_date_format')
 todays_date = str(time.strftime("%d/%m/%Y"))
 exit_code = 0
 
+
+
 try:
     # Python2
     input = raw_input
@@ -47,6 +50,11 @@ try:
 except NameError:
     # Python3
     pass
+
+
+
+# Colorama
+init()
 
 
 
@@ -73,19 +81,22 @@ else:
 # Functions
 def list_schedule_full():
     # Listing all the tasks in the schedule
-    total_task_number = 0
-    for each_task in schedule["schedule_list"].keys():
-        date = schedule["schedule_list"][each_task]
-        if schedule_date_format_type == 1:
-            formatted_date = date
-        elif schedule_date_format_type == 2:
-            formatted_date = date[3:5] + "/" + date[0:2] + "/" + date[6:10]
-        elif schedule_date_format_type == 3:
-            formatted_date = date[6:10] + "/" + date[3:5] + "/" + date[0:2]
-        elif schedule_date_format_type == 4:
-            formatted_date = date[6:10] + "/" + date[0:2] + "/" + date[3:5]
-        print("- " + each_task + " (" + formatted_date + ")")
-        total_task_number = total_task_number + 1
+    print("\n")
+    with open(schedule_file, "r+") as schedule_file_open:
+        schedule = json.load(schedule_file_open)
+        total_task_number = 0
+        for each_task in schedule["schedule_list"].keys():
+            date = schedule["schedule_list"][each_task]
+            if schedule_date_format_type == 1:
+                formatted_date = date
+            elif schedule_date_format_type == 2:
+                formatted_date = date[3:5] + "/" + date[0:2] + "/" + date[6:10]
+            elif schedule_date_format_type == 3:
+                formatted_date = date[6:10] + "/" + date[3:5] + "/" + date[0:2]
+            elif schedule_date_format_type == 4:
+                formatted_date = date[6:10] + "/" + date[0:2] + "/" + date[3:5]
+            print("- " + each_task + " (" + formatted_date + ")")
+            total_task_number = total_task_number + 1
     if total_task_number == 0:
         print("- Your schedule is empty!")
 
@@ -105,16 +116,17 @@ while exit_code == 0:
     # Commands
 
     # Help - displays help
-    if any(command in user_input for command in ("help", "--help", "help me", "i need help")):
+
+    if user_input == "help" or user_input == "--help" or user_input == "help me" or user_input == "i need help":
         print("\n")
-        print("Welcome to schedule module where you can modify your daily schedule. You can add/remove/change events how ever")
-        print("you want. Just use one of the commands below;")
+        print("Welcome to schedule module where you can modify your daily schedule. You can add/remove/change events how ever",
+        "you want. Just use one of the commands below;")
         print("\n")
-        print("add [name of the task] - adds new task to the schedule,")
-        print("remove [name of the task] - removes the task from the schedule,")
-        print("rename [name of the task] - changes the name of already existing task,")
-        print("move [name of the task] - moves one task to another date")
-        print("exit - exits schedule module")
+        print(Fore.BLUE + "add " + Fore.GREEN + "[name of the task]" + Fore.WHITE + " - adds new task to the schedule,")
+        print(Fore.BLUE + "remove " + Fore.GREEN + "[name of the task]" + Fore.WHITE + " - removes the task from the schedule,")
+        print(Fore.BLUE + "rename " + Fore.GREEN + "[name of the task]" + Fore.WHITE + " - changes the name of already existing task,")
+        print(Fore.BLUE + "move " + Fore.GREEN + "[name of the task]" + Fore.WHITE + " - moves one task to another date")
+        print(Fore.BLUE + "exit" + Fore.WHITE + " - exits schedule module")
 
     # Add - add the task to schedule
     elif user_input[:4] == "add ":
