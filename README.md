@@ -17,8 +17,10 @@ Heinrichy is open-source python-based assistant which can help you with;
 
 ## Curent version
 
-The most recent version is _0.36_Alpha which brings:
-- Added ability to search for movie that it is not in your library using 'movie search (the name of the movie) for example 'movie search the terminator'
+The most recent version _0.38_Alpha brings:
+-Added colorama instead of class with colours as colorama has wider range of options.
+-New data.json file which has all the local commands for Heinrichy.
+-Changed how Heinrichy shows schedule so it is updated every time it wants to show it.
 
 ## Installation
 After downloading Heinrichy, fill in the config file where the values say 'default' (you can also change some other
@@ -40,19 +42,19 @@ give you any errors, it means you can run Heinrichy by running 'heinrichy_main.p
 
 ## To-do
 - [x] *Search for movies on the hard drive and give info about them*
+- [x] *Move commands into the file*
 - [x] *Currency conversion*
-- [x] *Dictionary*
 - [x] *Random jokes*
+- [x] *Dictionary*
 - [ ] *Wikipedia*
 - [ ] *Show weather*
+- [ ] *Random fact/quotes*
 - [ ] *Improve calculator*
 - [ ] *Lyrics for chosen song*
 - [ ] *Url expander/shortener*
-- [ ] *Random fact/quotes*
 - [ ] *News from chosen websites*
 - [ ] *Allow to install Heinrichy*
 - [ ] *Download subtitles for movies*
-- [ ] *Move commands into the database*
 - [ ] *Give tvshow/book/music description*
 
 ## Modules

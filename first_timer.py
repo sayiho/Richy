@@ -5,7 +5,7 @@
 #              | |_| |/ _ | | '_ \| '__| |/ __| '_ \| | | |
 #              |  _  |  __| | | | | |  | | (__| | | | |_| |
 #              |_| |_|\___|_|_| |_|_|  |_|\___|_| |_|\__, |
-#                                                    |___/           _0.36_Alpha
+#                                                    |___/           _0.38_Alpha
 #
 #   Heinrichy - personal assistant made especially for GNU/Linux because we
 #                   deserve our own version of siri too!
@@ -71,6 +71,14 @@ def check_dependencies():
     except NameError:
         print("You don't have installed BeautifulSoup module which is required for Heinrichy.")
         print("Please run 'pip install beautifulsoup' as root and run this script again.")
+        print("Exiting...")
+        sys.exit()
+    try:
+        from colorama import *
+        print("Colorama module detected...")
+    except NameError:
+        print("You don't have installed Colorama module which is required for Heinrichy.")
+        print("Please run 'pip install colorama' as root and run this script again.")
         print("Exiting...")
         sys.exit()
     print("Warning; multimedia module in Heinrichy requires you to download about 5(+) dependencies. Are you sure you want to use this module? [Y/N]")

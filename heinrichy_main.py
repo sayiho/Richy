@@ -5,7 +5,7 @@
 #              | |_| |/ _ | | '_ \| '__| |/ __| '_ \| | | |
 #              |  _  |  __| | | | | |  | | (__| | | | |_| |
 #              |_| |_|\___|_|_| |_|_|  |_|\___|_| |_|\__, |
-#                                                    |___/           _0.37_Alpha
+#                                                    |___/           _0.38_Alpha
 #
 #   Heinrichy - personal assistant made especially for GNU/Linux because we
 #                   deserve our own version of siri too!
@@ -22,6 +22,7 @@ import json
 import time
 import random
 import httplib2
+from colorama import init, Fore
 from time import sleep
 from timeit import timeit
 from bs4 import BeautifulSoup
@@ -49,12 +50,12 @@ sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=32, cols=115))
 
 
 # Checking for config file
-config_file = current_path + "/config.conf"
+config_file = current_path + "/config/config.conf"
 is_config_file = os.path.isfile(config_file)
 
 if not is_config_file:
     print("Heinrichy - personal assistant made especially for GNU/Linux because we deserve our own version of siri too!")
-    print("Heinrichy wasn't able to detect config file which is required to run, please redownload\n Heinrichy with this file...")
+    print("Heinrichy wasn't able to detect config file which is required to run Heinrichy, please redownload\n Heinrichy with this file...")
     print("Exiting...")
     sys.exit()
 else:
@@ -84,10 +85,22 @@ else:
 
 
 
+# Checking for data file
+data_file = current_path + "/config/data.json"
+is_data_file = os.path.isfile(data_file)
+if not is_data_file:
+    print("Heinrichy - personal assistant made especially for GNU/Linux because we deserve our own version of siri too!")
+    print("Heinrichy wasn't able to detect data file which is required to run Heinrichy, please redownload\n Heinrichy with this file...")
+    print("Exiting...")
+    sys.exit()
+else:
+    with open(data_file, "r+") as data_file_open:
+        data = json.load(data_file_open)
+
 # Loading schedule module & schedule file
 if schedule_module == "On":
     print("Loading schedule module...")
-    schedule_file = current_path + "/schedule.json"
+    schedule_file = current_path + "/config/schedule.json"
     schedule_module_file = current_path + "/modules/schedule.py"
     is_schedule_file = os.path.isfile(schedule_file)
     is_schedule_module = os.path.isfile(schedule_module_file)
@@ -117,53 +130,41 @@ if multimedia_module == "On":
 
 
 
-# Classes & functions
-print("Loading classes and functions...")
-
-class bcolors:
-    """ Load colors for the terminal """
-    PINK = '\033[95m'
-    BLUE = '\033[94m'
-    YELLOW = '\033[93m'
-    GREEN = '\033[92m'
-    RED = '\033[91m'
-    WHITE = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-    GREY = '\033[90m'
+# Functions
+print("Loading functions...")
 
 def list_schedule():
     """ List the schedule """
     total_task_number_today = 0
     print("Your today's schedule;")
-    for task in schedule["schedule_list"].keys():
-        if schedule["schedule_list"][task] == todays_date:
-            print("- " + task)
-            total_task_number_today = total_task_number_today + 1
+    with open(schedule_file, "r+") as schedule_file_open:
+        schedule = json.load(schedule_file_open)
+        for task in schedule["schedule_list"].keys():
+            if schedule["schedule_list"][task] == todays_date:
+                print("- " + task)
+                total_task_number_today = total_task_number_today + 1
     if total_task_number_today == 0:
         print("- Your schedule is empty for today!")
     print("\n")
 
-# Prints the main
 def print_main_screen():
     """ Print main 'Heinrichy' text """
 
-    # Main 'Heinrichy' text
     print("___________________________________________________________________________________________________________________")
     print("|                                                                                                                 |")
     print("|                                                                                                                 |")
-    print("|        " + color_changer + "ooooo   ooooo            o8o                        o8o            oooo" + bcolors.WHITE + "                                  |")
-    print("|        " + color_changer + "`888'   `888'             ''                        `'            `888" + bcolors.WHITE + "                                   |")
-    print("|         " + color_changer + "888     888   .ooooo.  oooo  ooo. .oo.   oooo d8b oooo   .ooooo.   888 .oo.   oooo    ooo" + bcolors.WHITE + "               |")
-    print("|         " + color_changer + "888ooooo888  d88' `88b `888  `888P'Y88b  `888""8P  `888   d88' `'Y8  888P'Y88b   `88.   .8'" + bcolors.WHITE + "               |")
-    print("|         " + color_changer + "888     888  888ooo888  888   888   888   888      888  888        888   888    `88..8'" + bcolors.WHITE + "                 |")
-    print("|         " + color_changer + "888     888  888    .o  888   888   888   888      888  888   .o8  888   888     `888'" + bcolors.WHITE + "                  |")
-    print("|        " + color_changer + "o888o   o888o `Y8bod8P' o888o o888o o888o d888b    o888o `Y8bod8P' o888o o888o     .8'" + bcolors.WHITE + "                   |")
-    print("|                                                                                       " + color_changer + ".o..P'" + bcolors.WHITE + "                    |")
+    print("|        " + color_changer + "ooooo   ooooo            o8o                        o8o            oooo" + Fore.WHITE + "                                  |")
+    print("|        " + color_changer + "`888'   `888'             ''                        `'            `888" + Fore.WHITE + "                                   |")
+    print("|         " + color_changer + "888     888   .ooooo.  oooo  ooo. .oo.   oooo d8b oooo   .ooooo.   888 .oo.   oooo    ooo" + Fore.WHITE + "               |")
+    print("|         " + color_changer + "888ooooo888  d88' `88b `888  `888P'Y88b  `888""8P  `888   d88' `'Y8  888P'Y88b   `88.   .8'" + Fore.WHITE + "               |")
+    print("|         " + color_changer + "888     888  888ooo888  888   888   888   888      888  888        888   888    `88..8'" + Fore.WHITE + "                 |")
+    print("|         " + color_changer + "888     888  888    .o  888   888   888   888      888  888   .o8  888   888     `888'" + Fore.WHITE + "                  |")
+    print("|        " + color_changer + "o888o   o888o `Y8bod8P' o888o o888o o888o d888b    o888o `Y8bod8P' o888o o888o     .8'" + Fore.WHITE + "                   |")
+    print("|                                                                                       " + color_changer + ".o..P'" + Fore.WHITE + "                    |")
     if show_version == "True":
-        print("|                                                                                       " + color_changer + "`Y8P'" + bcolors.WHITE + "        _0.36_Alpha  |")
+        print("|                                                                                       " + color_changer + "`Y8P'" + Fore.WHITE + "        _0.38_Alpha  |")
     elif show_version == "False":
-        print("|                                                                                       " + color_changer + "`Y8P'" + bcolors.WHITE + "                     |")
+        print("|                                                                                       " + color_changer + "`Y8P'" + Fore.WHITE + "                     |")
     print("|_________________________________________________________________________________________________________________|")
 
 def print_schedule():
@@ -178,16 +179,16 @@ def check_birthday():
     """ Check if its users' birthday """
     if schedule_date_format_type == 1:
         if date_of_birth[:5] == str(time.strftime("%d/%m")):
-            print(bcolors.YELLOW + "Happy Birthday, " + name + "!\n" + bcolors.WHITE)
+            print(Fore.YELLOW + "Happy Birthday, " + name + "!\n" + Fore.WHITE)
     elif schedule_date_format_type == 2:
         if date_of_birth[:5] == str(time.strftime("%m/%d")):
-            print(bcolors.YELLOW + "Happy Birthday, " + name + "!\n" + bcolors.WHITE)
+            print(Fore.YELLOW + "Happy Birthday, " + name + "!\n" + Fore.WHITE)
     elif schedule_date_format_type == 3:
         if date_of_birth[5:10] == str(time.strftime("%m/%d")):
-            print(bcolors.YELLOW + "Happy Birthday, " + name + "!\n" + bcolors.WHITE)
+            print(Fore.YELLOW + "Happy Birthday, " + name + "!\n" + Fore.WHITE)
     elif schedule_date_format_type == 4:
         if date_of_birth[5:10] == str(time.strftime("%d/%m")):
-            print(bcolors.YELLOW + "Happy Birthday, " + name + "!\n" + bcolors.WHITE)
+            print(Fore.YELLOW + "Happy Birthday, " + name + "!\n" + Fore.WHITE)
 
 def response(query):
     """ Gets answer for users' query from wolframalpha servers """
@@ -251,23 +252,85 @@ def response(query):
             else:
                 return "Wrong command."
 
+def user_input_search(user_input):
+    """ Checks user input in data.json, if not it sends request to wolframalpha """
+    local = 0
+    user_input = user_input.lower()
+    for item in data["data-response"]:
+        if item == user_input or item == user_input[:10] or item == user_input[:11] or item == user_input[:12] or item == user_input[:13]:
+            if data["data-response"][item] == "1":
+                local = 1
+                if schedule_module == "On":
+                    exec(compile(open(schedule_module_file).read(), schedule_module_file, 'exec'))
+                elif schedule_module == "Off":
+                    print("Schedule module has been turned off. Please change the config and restart Heinrichy.")
+                    pause = input()
+                break
+
+            elif data["data-response"][item] == "2":
+                local = 1
+                if multimedia_module == "On":
+                    modules.multimedia.index_all()
+                elif multimedia_module == "Off":
+                    print("multimedia module has been turned off. Please change the config and restart Heinrichy.")
+                pause = input()
+                break
+
+            elif data["data-response"][item] == "3":
+                local = 1
+                if multimedia_module == "On":
+                    if user_input.find("--") == -1:
+                        args = "none"
+                        modules.multimedia.list_all(args)
+                    else:
+                        args = "--" + user_input.split('--', 1)[1]
+                        modules.multimedia.list_all(args)
+                elif multimedia_module == "Off":
+                    print("multimedia module has been turned off. Please change the config and restart Heinrichy.")
+                pause = input()
+                break
+
+            elif data["data-response"][item] == "4":
+                local = 1
+                if multimedia_module == "On":
+                    modules.multimedia.movies_help()
+                elif multimedia_module == "Off":
+                    print("multimedia module has been turned off. Please change the config and restart Heinrichy.")
+                pause = input()
+                break
+
+            elif data["data-response"][item] == "5":
+                local = 1
+                if multimedia_module == "On":
+                    users_movie_name = user_input[13:]
+                    modules.multimedia.single_movie_info(users_movie_name)
+                elif multimedia_module == "Off":
+                    print("multimedia module has been turned off. Please change the config and restart Heinrichy.")
+                pause = input()
+                break
+
+    if local == 0:
+        print(response(user_input))
+        pause = input()
+
 
 
 # Setting up the colour of the letters
+init()
 if letter_color == "BLUE":
-    color_changer = bcolors.BLUE
+    color_changer = Fore.BLUE
 elif letter_color == "GREY":
-    color_changer = bcolors.GREY
+    color_changer = Fore.GREY
 elif letter_color == "PINK":
-    color_changer = bcolors.PINK
+    color_changer = Fore.PINK
 elif letter_color == "YELLOW":
-    color_changer = bcolors.YELLOW
+    color_changer = Fore.YELLOW
 elif letter_color == "GREEN":
-    color_changer = bcolors.GREEN
+    color_changer = Fore.GREEN
 elif letter_color == "RED":
-    color_changer = bcolors.RED
+    color_changer = Fore.RED
 elif letter_color == "WHITE":
-    color_changer = bcolors.WHITE
+    color_changer = Fore.WHITE
 
 
 
@@ -314,37 +377,11 @@ if clear_commands == "True":
         # Asking for user input
         print("How can I help you today, " + name + "?")
         user_input = input(">")
-        if user_input == "schedule":
-            if schedule_module == "On":
-                exec(compile(open(schedule_module_file).read(), schedule_module_file, 'exec'))
-            elif schedule_module == "Off":
-                print("Schedule module has been turned off. Please change the config and restart Heinrichy.")
-                pause = input()
-        elif any(command in user_input for command in ("movies index", "movie index", "movies list", "movie list")) and multimedia_module == "Off":
-            print("multimedia module has been turned off. Please change the config and restart Heinrichy.")
-            pause = input()
-        elif any(command in user_input for command in ("movies index", "movie index", "movies list", "movie list")) and multimedia_module == "On":
-            if user_input == "movies index" or user_input == "movie index":
-                modules.multimedia.index_all()
-                pause = input()
-            elif user_input[:11] == "movies list" or user_input[:10] == "movie list":
-                if user_input.find("--") == -1:
-                    args = "none"
-                    modules.multimedia.list_all(args)
-                else:
-                    args = "--" + user_input.split('--', 1)[1]
-                    modules.multimedia.list_all(args)
-                pause = input()
-        elif user_input == "movies help" or user_input == "movie help":
-            modules.multimedia.movies_help()
-            pause = input()
-        elif user_input[:12] == "movie search" or user_input[:13] == "movies search":
-            users_movie_name = user_input[13:]
-            modules.multimedia.single_movie_info(users_movie_name)
-            pause = input()
-        else:
-            print(response(user_input))
-            pause = input()
+
+        # Searching for answer
+        user_input_search(user_input)
+
+
 
 elif clear_commands == "False":
 
@@ -362,39 +399,9 @@ elif clear_commands == "False":
 
         print("How can I help you today, " + name + "?")
         user_input = input(">")
-        if user_input == "schedule":
-            if schedule_module == "On":
-                exec(compile(open(schedule_module_file).read(), schedule_module_file, 'exec'))
-            elif schedule_module == "Off":
-                print("Schedule module has been turned off. Please change the config and restart Heinrichy.")
-                pause = input()
-        elif any(command in user_input for command in ("movies index", "movie index", "movies list", "movie list")) and multimedia_module == "Off":
-            print("multimedia module has been turned off. Please change the config and restart Heinrichy.")
-            pause = input()
-        elif any(command in user_input for command in ("movies index", "movie index", "movies list", "movie list")) and multimedia_module == "On":
-            if user_input == "movies index" or user_input == "movie index":
-                modules.multimedia.index_all()
-                pause = input()
-            elif user_input[:11] == "movies list" or user_input[:10] == "movie list":
-                if user_input.find("--") == 12:
-                    args = "--" + user_input.split('--', 1)[1]
-                    modules.multimedia.list_all(args)
-                elif user_input.find("--") == -1:
-                    args = "none"
-                    modules.multimedia.list_all(args)
-                else:
-                    print("Seems like there is an error with your command.")
-                pause = input()
-        elif user_input == "movies help" or user_input == "movie help":
-            modules.multimedia.movies_help()
-            pause = input()
-        elif user_input[:12] == "movie search" or user_input[:13] == "movies search":
-            users_movie_name = user_input[13:]
-            modules.multimedia.single_movie_info(users_movie_name)
-            pause = input()
-        else:
-            print(response(user_input))
-            pause = input()
+
+        # Searching for answer
+        user_input_search(user_input)
 
 else:
     print("Variable clear_commands has invalid value, please change it in config file to either True or False.")
