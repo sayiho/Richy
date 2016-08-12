@@ -17,7 +17,7 @@ Heinrichy is open-source python-based assistant which can help you with;
 
 ## Curent version
 
-The most recent version _0.38_Alpha brings:
+The most recent version _0.38Alpha brings:
 
 -Added colorama instead of class with colours as colorama has wider range of options.
 
