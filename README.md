@@ -18,8 +18,11 @@ Heinrichy is open-source python-based assistant which can help you with;
 ## Curent version
 
 The most recent version _0.38_Alpha brings:
+
 -Added colorama instead of class with colours as colorama has wider range of options.
+
 -New data.json file which has all the local commands for Heinrichy.
+
 -Changed how Heinrichy shows schedule so it is updated every time it wants to show it.
 
 ## Installation
