@@ -1,4 +1,4 @@
-# Heinrichy [![Build Status](https://travis-ci.org/MichPCX/Heinrichy.svg?branch=master)](https://travis-ci.org/MichPCX/Heinrichy) [![Python 2.7, 3.4, 3.5](https://img.shields.io/pypi/pyversions/icon_font_to_png.svg)](https://github.com/MichPCX/Heinrichy)
+# Heinrichy [![Build Status](https://travis-ci.org/MichPCX/Heinrichy.svg?branch=master)](https://travis-ci.org/MichPCX/Heinrichy) [![Python Language](https://camo.githubusercontent.com/b5335e67163d72a456a4ea4345e58b7eb497c884/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c616e67756167652d507974686f6e2d7265642e737667)](https://github.com/MichPCX/Heinrichy) [![Python 2.7, 3.4, 3.5](https://img.shields.io/pypi/pyversions/icon_font_to_png.svg)](https://github.com/MichPCX/Heinrichy)
 Personal assistant made especially for GNU/Linux because we deserve our own version of siri too!
 
 
