@@ -32,6 +32,9 @@ The most recent version 0.45_Beta brings:
 After downloading Richy, just move the folder .richy to /home/{your username}/ and start setup.py. Thats all!
 When you will run Richy for the first time, you will be able also to modify config.
 
+## How to use it?
+After installation, you can simply run 'richy {your question here}' for example 'richy whats 2+2?' and richy will give you the answer. Or you could always just type in 'richy' which will open up its main screen where you can see your schedule and ask questions from there!
+
 ## Basic questions
 ```
 'schedule'
