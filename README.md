@@ -1,16 +1,28 @@
 # Richy [![Build Status](https://travis-ci.org/MichPCX/Richy.svg?branch=master)](https://travis-ci.org/MichPCX/Richy) [![Python Language](https://i.imgur.com/0Ao4FpW.png)](https://github.com/MichPCX/Richy) [![Python 2.7, 3.4, 3.5](https://i.imgur.com/kpTitBA.png)](https://github.com/MichPCX/Richy) [![OS Linux](https://i.imgur.com/CqiDOdy.png)](https://github.com/MichPCX/Richy)
+
+<p align="center"><img src="https://i.imgur.com/fb5cHtB.png" alt="Linux" /></p>
+
 Personal assistant made especially for GNU/Linux because we deserve our own version of siri too!
 
-Did you ever wanted to have your own assistant, but the only ones available are for Android/iOS/Windows plus you are
-worried about privacy?
+Do you use WolframAlpha often or you need a quick answer for simple question? Just use **Richy**.
 
-Well, now you can have '**Richy**' which will help you to live in the terminal, because what's the point of searching the web (which can take a while by the way) when you can simply just ask Richy?
-
-Richy is open-source python-based assistant which can help you with;
+**Richy** is open-source python-based assistant which can help you with;
+- aswering your (simple) questions,
 - maintaining your schedule,
-- aswering your questions,
 - calculating medium-level calculation,
 - giving you informations about your movies library or any movie you want
+
+## Why Richy?
+Once I found myself looking for answers on WolframAlpha every single day and as I loved (and still do!) using the terminal, I decided to make Richy. Richy will help you with day-to-day questions and tasks.
+It was made especially for GNU/Linux as users of Linux also need answers.
+
+## Installation
+To get Richy, just follow following steps;
+- Download Richy,
+- Move the folder .richy to /home/{your username}/
+- Run ```python setup.py install``` and you are ready to go!
+
+When running Richy for the first time, you will have the choice to edit config.
 
 ## Curent version
 
@@ -27,10 +39,6 @@ The most recent version 0.45_Beta brings:
  - Added better exception handling
  - Created script which will run the first time Richy is being run to modify the config, so the user can input his/hers name etc.
  - Added wikipedia summary (can be used as 'wiki the hobbit' for example)
-
-## Installation
-After downloading Richy, just move the folder .richy to /home/{your username}/ and start setup.py. Thats all!
-When you will run Richy for the first time, you will be able also to modify config.
 
 ## How to use it?
 After installation, you can simply run 'richy {your question here}' for example 'richy whats 2+2?' and richy will give you the answer. Or you could always just type in 'richy' which will open up its main screen where you can see your schedule and ask questions from there!
@@ -72,15 +80,6 @@ Prebuilded modules which you can find in Richy;
 - Multimedia (internal) - allows to get more information about movies you have on the local drive ('movie help')
 
 And many more modules and features coming soon!
-
-## Why Richy?
-Name 'Richy' is a modification after the name of famous physicist [Heinrich Friedrich Weber](https://en.wikipedia.org/wiki/Heinrich_F._Weber) which was Albert Einstein's initial doctoral
-advisor. As Heinrich was helping Albert Einstein, Richy will help you with day-to-day questions and tasks.
-It was made especially for GNU/Linux as members of Linux Master Race also need an assistant, however with few
-code modifications, the code should work on Microsoft Windows or MacOS. I've decided to create Richy after
-I came across an article where the author was trying to live in the terminal and only use the terminal without any GUI for
-30 days. This is nearly impossible without any preparation which is why I created Richy, I wanted to do
-nearly everything in the command line without the need for any user interface.
 
 ## How can I help?
 If you have any ideas on how Richy could be improved or if you found some interesting
