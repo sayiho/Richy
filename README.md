@@ -24,26 +24,30 @@ To get Richy, just follow following steps;
 
 When running Richy for the first time, you will have the choice to edit config.
 
+## How to use it?
+After installation you can use richy in two modes; internal and external;
+
+-internal, - simply type ```richy``` which will open up its main screen where you can see your schedule and ask questions from there!
+
+-external - you can simply run ```richy {your question here}``` for example ```richy whats 2+2?``` and richy will give you the answer you are looking for without starting the actual richy command prompt. 
+
 ## Curent version
 
-The most recent version 0.45_Beta brings:
+The most recent version of Richy is 0.45 which brings:
 
  - Changed name "Heinrichy" to just "Richy" which makes it simpler and easier to remember.
  - Code has been optimized for stability
- - Richy has entered Beta phrase and left Alpha as it works quite well without giving any errors
- - Added ability to install Richy using setup.py script (you can then just run 'richy what day is it' and richy will give you the answer.
+ - Richy has entered Beta phrase
+ - Added ability to install Richy using setup.py script
  - Richy config and modules has been moved to /home/$USER/.richy
- - Added ability to change the size of terminal in config which will change the main "Richy" text to fit the size of terminal that has been chosen.
- - Added ability to colour in version of Richy if you choose to dispaly it.
+ - Added ability to change the size of terminal in config which will also change the main "Richy" text to fit the size of terminal that has been chosen.
+ - Added ability to use colour to display version of Richy if you choose to.
  - Created logo_printer.py script which holds the functions for printing out the logo.
  - Added better exception handling
- - Created script which will run the first time Richy is being run to modify the config, so the user can input his/hers name etc.
- - Added wikipedia summary (can be used as 'wiki the hobbit' for example)
-
-## How to use it?
-After installation, you can simply run 'richy {your question here}' for example 'richy whats 2+2?' and richy will give you the answer. Or you could always just type in 'richy' which will open up its main screen where you can see your schedule and ask questions from there!
-
-## Basic questions
+ - Added script which will allow to edit config on first startup
+ - Added wikipedia summary (can be used as 'wiki the hobbit')
+ 
+## Example questions
 ```
 'schedule'
 'whats 100*42?'
@@ -52,38 +56,29 @@ After installation, you can simply run 'richy {your question here}' for example 
 'rhymes with coder'
 'dictionary vehicle'
 'scrabble programming'
-'US $900 2005' (inflation)
+'US $900 2005'
 'december 30, 1990 plus 10000 days'
 ```
 
+## Modules
+
+To add functionality to Richy, the script uses modules to add new functions to it so you can easily write your own modules. Prebuilded modules that come with Richy;
+- Schedule - allows to modify your schedule which will then be displayed in Richy ('schedule')
+- Multimedia - allows to get more information about movies you have on the local drive and movies you want to watch ('movie help')
+
 ## To-do
-- [x] *Search for movies on the hard drive and give info about them*
-- [x] *Move commands into the file*
-- [x] *Allow to install Richy*
-- [x] *Currency conversion*
-- [x] *Random jokes*
-- [x] *Dictionary*
-- [x] *Wikipedia*
 - [ ] *Show weather*
 - [ ] *Random fact/quotes*
-- [ ] *Improve calculator*
+- [ ] *Improve calculator to solve algebra*
 - [ ] *Lyrics for chosen song*
 - [ ] *Url expander/shortener*
 - [ ] *News from chosen websites*
 - [ ] *Download subtitles for movies*
 - [ ] *Give tvshow/book/music description*
 
-## Modules
+## Support & license
+If you found a bug in Richy, use [issue tracker](https://github.com/MichPCX/Richy/issues) to let me know. 
 
-Prebuilded modules which you can find in Richy;
-- Schedule (external) - allows to modify your schedule which will then be displayed in Richy ('schedule')
-- Multimedia (internal) - allows to get more information about movies you have on the local drive ('movie help')
+Also if you need to contact me directly, email me on *michpcx@protonmail.ch*.
 
-And many more modules and features coming soon!
-
-## How can I help?
-If you have any ideas on how Richy could be improved or if you found some interesting
-script that could be used as module to Richy, just email me; michpcx@protonmail.ch. Also, if you found some
-bugs in the code or you have more efficient way of performing a task, just create new issue in the [issue tracker](https://github.com/MichPCX/Richy/issues).
-
-*By michpcx, michpcx@protonmail.ch*
+**Warning**; Richy comes under [General Public License v3](https://github.com/MichPCX/Richy/blob/master/License.md). Please note that Richy is still in beta so you are using it for your own risk. Huge thanks goes to the user [subdiff](https://github.com/subdiff/Modern_Tux) for providing modernised version of linux logo.
