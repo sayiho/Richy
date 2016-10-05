@@ -1,4 +1,4 @@
-# Richy [![Build Status](https://travis-ci.org/MichPCX/Heinrichy.svg?branch=master)](https://travis-ci.org/MichPCX/Richy) [![Python Language](https://camo.githubusercontent.com/b5335e67163d72a456a4ea4345e58b7eb497c884/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c616e67756167652d507974686f6e2d7265642e737667)](https://github.com/MichPCX/Richy) [![Python 2.7, 3.4, 3.5](https://img.shields.io/pypi/pyversions/icon_font_to_png.svg)](https://github.com/MichPCX/Richy)
+# Richy [![Build Status](https://travis-ci.org/MichPCX/Richy.svg?branch=master)](https://travis-ci.org/MichPCX/Richy) [![Python Language](https://i.imgur.com/0Ao4FpW.png)](https://github.com/MichPCX/Richy) [![Python 2.7, 3.4, 3.5](https://i.imgur.com/kpTitBA.png)](https://github.com/MichPCX/Richy) [![OS Linux](https://i.imgur.com/CqiDOdy.png)](https://github.com/MichPCX/Richy)
 Personal assistant made especially for GNU/Linux because we deserve our own version of siri too!
 
 Did you ever wanted to have your own assistant, but the only ones available are for Android/iOS/Windows plus you are
